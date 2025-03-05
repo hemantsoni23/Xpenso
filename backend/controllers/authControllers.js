@@ -26,13 +26,15 @@ const loginUser = async (req, res) => {
       email,
     });
 
-    if (user && (await user.matchPassword(password))) {
-        const token = generateToken(user._id);
-        res.json({
-            token,
-        });
+    if (!user) {
+      res.status(404).json({message:"User not found. Create an account"});
+    }else if (user && (await user.matchPassword(password))) {
+      const token = generateToken(user._id);
+      res.json({
+          token,
+      });
     } else {
-        res.status(401).json({message:"Invalid credentials"});
+      res.status(401).json({message:"Invalid credentials"});
     }
 }
 

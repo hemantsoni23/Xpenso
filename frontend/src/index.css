@@ -1,27 +1,54 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* Theme Colors */
-
-@theme {
-  --color-primary: #4f46e5;        
-  --color-secondary: #6366f1;      
-  --color-background: #f9fafb;     
-  --color-text: #1f2937;           
-  --color-border: #e5e7eb;         
-  --color-muted: #9ca3af;          
+:root {
+  --primary-color: #4f46e5;
+  --secondary-color: #6366f1;
+  --background-color: #f9fafb;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --muted-color: #9ca3af;
 }
 
-@theme dark {
-  --color-background: #1f2937;     
-  --color-text: #f9fafb;           
-  --color-border: #374151;         
-  --color-muted: #d1d5db;          
+.dark {
+  --background-color: #1f2937;
+  --text-color: #f9fafb;
+  --border-color: #374151;
+  --muted-color: #d1d5db;
+}
+
+@theme {
+  --color-background: var(--background-color);
+  --color-text: var(--text-color);
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-border: var(--border-color);
+  --color-muted: var(--muted-color);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition-property: background-color, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  margin-bottom: 8px;
+  
+  &:focus {
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+  
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
