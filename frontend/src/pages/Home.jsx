@@ -9,9 +9,12 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background text-text flex flex-col md:flex-row">
       {/* Left Side Logo + Tagline */}
-      <div className="bg-primary flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left px-10 h-full min-h-screen">
-        <h1 className="text-5xl font-bold text-text mb-4">XPENSO</h1>
-        <p className="text-lg font-medium text-muted">
+      <div className="bg-primary flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left px-10 h-full p-3 min-h-6/12 md:min-h-screen">
+        <Link to="/" className="text-text text-4xl font-bold hover:text-text/50 transition-colors">
+          <span className="font-extrabold text-5xl">X</span>
+          <span className="font-medium tracking-tight">PENSO</span>
+        </Link>
+        <p className="text-lg font-medium text-text">
           Track your daily expenses easily!
         </p>
       </div>

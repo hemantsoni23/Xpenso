@@ -1,19 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --primary-color: #4f46e5;
-  --secondary-color: #6366f1;
-  --background-color: #f9fafb;
-  --text-color: #1f2937;
-  --border-color: #e5e7eb;
-  --muted-color: #9ca3af;
+  --primary-color: #6366F1; 
+  --secondary-color: #818CF8; 
+  --background-color: #F3F4F6;
+  --text-color: #111827; 
+  --border-color: #D1D5DB;
+  --muted-color: #4B5563;
+  --destructive-color: #EF4444;
+  --destructive-hover: #DC2626;
 }
 
 .dark {
-  --background-color: #1f2937;
-  --text-color: #f9fafb;
+  --background-color: #111827; 
+  --text-color: #F3F4F6; 
   --border-color: #374151;
-  --muted-color: #d1d5db;
+  --muted-color: #6B7280; 
+  --destructive-color: #DC2626; 
+  --destructive-hover: #B91C1C; 
 }
 
 @theme {
@@ -23,6 +27,8 @@
   --color-secondary: var(--secondary-color);
   --color-border: var(--border-color);
   --color-muted: var(--muted-color);
+  --color-destructive: var(--destructive-color);
+  --color-destructive-hover: var(--destructive-hover);
 }
 
 body {
@@ -51,4 +57,25 @@ body {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+.logo-x {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.animate-total {
+  animation: fade-in 0.5s ease-in-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
