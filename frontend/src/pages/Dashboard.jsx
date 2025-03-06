@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import Cookies from "js-cookie";
+import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
 import AddExpenseModal from "../components/AddExpenseModal";
 import { getExpensesAPI } from "../services/expenseApi";
@@ -18,14 +18,14 @@ const Dashboard = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const LIMIT = 5;
-  const token = Cookies.get("xpenso-accessToken")
+  const { user } = useAuth();
 
   const fetchExpenses = async () => {
     try {
       setIsLoading(true);
-      let query = `?page=${page}&limit=${LIMIT}`;
-      if (category) query += `&category=${category}`;
-      if (date) query += `&date=${date}`;
+      let query = ``;
+      if (category) query += `?category=${category}`;
+      if (date) query += `${query.includes("?") ? "&" : "?"}date=${date}`;
       const { data } = await getExpensesAPI(query);
 
       const filtered = data.filter((expense) =>
@@ -34,6 +34,7 @@ const Dashboard = () => {
 
       setExpenses(filtered);
     } catch (error) {
+      console.log(error);
       toast.error(error?.response?.data?.message || "Failed to fetch expenses");
     } finally {
       setIsLoading(false);
@@ -41,8 +42,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    fetchExpenses();
-  }, [category, search, page, date, token]);
+    if(user){
+      fetchExpenses();
+    }
+  }, [category, search, page, date, user]);
 
   const resetFilters = () => {
     setCategory("");

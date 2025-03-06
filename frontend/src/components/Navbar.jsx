@@ -1,5 +1,6 @@
 import ThemeToggle from "./ThemeToggle";
 import { Link, replace, useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
 import {useAuth} from "../context/AuthContext"
 import Cookies from "js-cookie";
 
@@ -8,6 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     logout();
+    toast.success("Logged out successfully!");
     navigate("/", {replace: true});
   }
   return (

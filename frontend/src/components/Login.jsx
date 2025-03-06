@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit(handleLogin)}
-      className="bg-muted p-6 rounded-2xl shadow-lg w-full"
+      className="bg-muted/25 p-6 rounded-2xl shadow-lg w-full"
     >
       <h2 className="text-xl font-bold text-primary text-center mb-6">
         Login to Xpenso

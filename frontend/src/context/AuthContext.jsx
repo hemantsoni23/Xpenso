@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token) => {
-    Cookies.set("xpenso-accessToken", token);
+    Cookies.set("xpenso-accessToken", token, {expires: 1});
     setUser(true);
   };
 

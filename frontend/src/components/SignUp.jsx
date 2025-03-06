@@ -30,7 +30,7 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSignUp)} className="bg-muted p-6 rounded-2xl shadow-lg w-96">
+    <form onSubmit={handleSubmit(handleSignUp)} className="bg-muted/25 p-6 rounded-2xl shadow-lg w-96">
       <h2 className="text-xl font-bold mb-4 text-primary text-center">Sign Up for Xpenso</h2>
 
       <input
